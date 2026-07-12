@@ -16,7 +16,7 @@ export async function loginStaff(formData: FormData) {
     return { error: "Ingresa tu correo y tu contraseña." };
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
@@ -27,13 +27,13 @@ export async function loginStaff(formData: FormData) {
 }
 
 export async function logoutStaff() {
-  const supabase = createClient();
+  const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/login");
 }
 
 async function requireRole(allowed: Role[]) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -128,7 +128,7 @@ export async function createClienteOrder(
   customerPhone: string,
   items: { product_id: string; qty: number }[]
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.rpc("create_cliente_order", {
     p_customer_name: customerName,
@@ -203,7 +203,7 @@ export async function inviteStaffUser(formData: FormData) {
   }
   if (password.length < 8) return { error: "La contraseña debe tener al menos 8 caracteres." };
 
-  const admin = createAdminClient();
+  const admin = await createAdminClient();
 
   const { data: created, error: createErr } = await admin.auth.admin.createUser({
     email,
