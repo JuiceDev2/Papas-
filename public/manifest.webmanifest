@@ -1,0 +1,26 @@
+{
+  "name": "Papas Doradas",
+  "short_name": "Papas Doradas",
+  "description": "Papas doradas por bolsa (150 g) y por kilo (1000 g)",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF2DF",
+  "theme_color": "#C6401B",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

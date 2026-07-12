@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+body {
+  background-color: #fbf2df;
+  color: #33241a;
+}
+
+/* Bolsa de papas: borde superior en zigzag (sellado térmico) */
+.bag-shape {
+  clip-path: polygon(
+    0% 10%, 8% 2%, 16% 10%, 24% 2%, 32% 10%, 40% 2%, 48% 10%,
+    56% 2%, 64% 10%, 72% 2%, 80% 10%, 88% 2%, 96% 10%, 100% 4%,
+    100% 100%, 0% 100%
+  );
+}
+
+/* Ticket / recibo: borde inferior perforado */
+.ticket-edge::after {
+  content: "";
+  display: block;
+  height: 16px;
+  margin-top: -1px;
+  background-image: radial-gradient(circle at 10px 0, transparent 9px, #fbf2df 10px);
+  background-size: 20px 16px;
+  background-repeat: repeat-x;
+}
+
+.ticket-edge-top::before {
+  content: "";
+  display: block;
+  height: 16px;
+  margin-bottom: -1px;
+  background-image: radial-gradient(circle at 10px 16px, transparent 9px, #fbf2df 10px);
+  background-size: 20px 16px;
+  background-repeat: repeat-x;
+}
+
+/* Respeta el notch y el home indicator cuando la app corre instalada (PWA) */
+.safe-top {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
