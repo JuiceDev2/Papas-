@@ -5,7 +5,7 @@ import type { Order } from "@/lib/types";
 export const revalidate = 0;
 
 export default async function ResumenPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: orders } = await supabase.rpc("list_orders");
   const { count: productCount } = await supabase

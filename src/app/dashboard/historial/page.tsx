@@ -11,7 +11,7 @@ const ACTION_LABELS: Record<string, string> = {
 };
 
 export default async function HistorialPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();

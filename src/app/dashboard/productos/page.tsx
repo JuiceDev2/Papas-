@@ -5,7 +5,7 @@ import type { Product, Role } from "@/lib/types";
 export const revalidate = 0;
 
 export default async function ProductosPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
